@@ -1,5 +1,8 @@
 ---
 version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
 
 runson: linux
 
@@ -14,11 +17,15 @@ runtime:
 
 concurrency: 3
 
+env:
+  NUGET_PACKAGES: '/home/ltuser/.nuget/packages/'
+  NUGET_HTTP_CACHE_PATH: '/home/ltuser/.local/share/NuGet/v3-cache'
+  NUGET_PLUGINS_CACHE_PATH: '/home/ltuser/.local/share/NuGet/plugins-cache'
+
 pre:
  - dotnet build
- - dotnet --version
- 
-cacheKey: '{{ checksum "packages.txt" }}'
+
+cacheKey: '{{ checksum "OnlySpecTest.csproj" }}'
 
 post:
   - cat yaml/linux/specflow_hyperexecute_autosplit_sample.yaml
