@@ -17,11 +17,6 @@ runtime:
 
 concurrency: 3
 
-env:
-  NUGET_PACKAGES: '/home/ltuser/.nuget/packages/'
-  NUGET_HTTP_CACHE_PATH: '/home/ltuser/.local/share/NuGet/v3-cache'
-  NUGET_PLUGINS_CACHE_PATH: '/home/ltuser/.local/share/NuGet/plugins-cache'
-
 pre:
  - dotnet build
 
